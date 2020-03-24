@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="erenacikel" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ErenAÇIKEL / DEMO</title>
+	<link rel="stylesheet" href="css/demo.css">
+	
+	<style type="text/css">
+	ul li {
+		color: red;
+		text-decoration: line-through;
+
+	}
+	ul li:last-child {
+		text-decoration: dotted;
+		background: red;
+		color: white;
+	}
+
+	.card-header{
+		background: #d6a15b
+	}
+
+	</style>
+</head>
+<body onload="checkCookie()">
+		<hr>
+		<center><h3 style="color:#d6a15b">SİPARİŞLER<h3></center>
+		<hr>
+	
+		<div class="container">
+				<div class="row">
+						<!-- BİTKİ ÇAY-->
+						<div class="col-lg-3 col-md-4 mt-2">				
+							<div class="card mt-3">
+								<div class="card-header">Bitki Çayı</div>
+								<ul id="bitki_çay" class="list-group list-group-flush"></ul>
+							</div>
+						</div>
+						
+						<!--KAHVE-->
+						<div class="col-lg-3 col-md-4 mt-2">				
+							<div class="card mt-3">
+								<div class="card-header">Kahve</div>
+								<ul id="kahve" class="list-group list-group-flush"></ul>
+							</div>
+						</div>
+						
+						<!--SALEP-->
+						<div class="col-lg-3 col-md-4 mt-2">				
+							<div class="card mt-3">
+								<div class="card-header">SALEP</div>
+								<ul id="salep" class="list-group list-group-flush"></ul>
+							</div>
+						</div>
+						
+						<!--LİMONATA-->
+						<div class="col-lg-3 col-md-4 mt-2">				
+							<div class="card mt-3">
+								<div class="card-header">LİMONATA</div>
+								<ul id="limonata" class="list-group list-group-flush"></ul>
+							</div>
+						</div>
+						
+				</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-4 mt-2">
+						<div class="card">
+							<div class="card-body">						
+								<img type="button" style="width:100%" id="bitki_çay" name="mybuton" onclick="selector(0)" src="images/cay.jpg" alt="ÇAY">					
+							</div>
+					</div>				
+				</div>
+				<div class="col-lg-3 col-md-4 mt-2">
+						<div class="card">
+							<div class="card-body">						
+								<img type="button" style="width:100%" id="kahve" name="mybuton2" onclick="selector(1)" src="images/kahve.jpg" alt="KAHVE">						
+							</div>
+						</div>				
+				</div>
+			
+				<div class="col-lg-3 col-md-4 mt-2">
+					<div class="card">
+						<div class="card-body">						
+							<img type="button" style="width:100%" id="salep" name="mybuton3" onclick="selector(2)" src="images/salep.jpg" alt="SALEP">						
+						</div>
+					</div>				
+				</div>
+				<div class="col-lg-3 col-md-4 mt-2">
+						<div class="card">
+							<div class="card-body">						
+								<img type="button" style="width:100%" id="limonata" name="mybuton4" onclick="selector(3)" src="images/limonata.jpg" alt="LİMONATA">						
+							</div>
+						</div>				
+				</div>
+		</div>
+			
+	
+	
+	<script src="js/demo1.js"></script>
+	<script src="js/demo2.js"></script>
+	<script src="js/demo3.js"></script>
+	
+	<script type="text/javascript">
+	function selector(i){
+
+		var imgs=document.getElementsByTagName("img")[i].getAttribute("id");
+		var time=new Date();
+		var hour=time.getHours();
+		var min=time.getMinutes();
+		var sec=time.getSeconds();
+		var item =(hour+":"+min+":"+sec);
+		CreateItem(item,imgs);
+	}
+
+	function CreateItem(item,imgs){
+		
+		var li =document.createElement('li');
+		var t=document.createTextNode(item);	
+		
+		setCookie("date",t);
+		
+		var list = document.getElementById(imgs);
+		li.className='list-group-item';
+		li.id='x';
+		li.appendChild(t);
+		list.appendChild(li);
+	}	
+
+	var today = new Date();
+	var expiry = new Date(today.getTime() + 24 * 3600 * 1000);
+
+	function setCookie(cname, cvalue){
+		document.cookie=cname + "=" + escape(cvalue) + "; path=/; expires=" + expiry.toGMTString();
+	}
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.sub(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.sub(name.length, c.length);
+			}
+		}
+		return "";
+	}	
+	function checkCookie() {
+	  var date=getCookie("date");
+	  if (date != "") {
+		CreateItem(date,0);	
+	  } else {
+		 
+		 if (date != "" && date != null) {
+		   setCookie("date", date);
+		 }
+	  }
+	}	
+	</script>
+
+	<script> //gece 12de liste silinecek
+		var time=new Date();
+		var hour= 23 - time.getHours();
+		var min= 59 - time.getMinutes();
+		var sec=59 - time.getSeconds();
+
+		var a = sec*1000 + min*60000 + hour*3600000
+		
+		setTimeout(function() {
+			$('li').hide()
+		  $('li').nextAll().hide()
+		}, a);
+		</script>
+
+
+
+</body>
+</html>

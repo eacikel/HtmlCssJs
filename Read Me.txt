@@ -1,0 +1,10 @@
+İstenilen Doğrultuda Şipariş Otomasyon Demosu Yapılmıştır.
+Herhangi bir framework kullanmadan html,css,js ve jquery ile tüm ihtiyaçlar karşılanmıştır. 
+DOM ve Selector yardımıyla elemanlara ulaşılmış üzerlerinde işlem yapılabilmiştir.
+İlgili ürünün resmine tıklandığında o ürüne ait listeye saat dakika saniye olarak  sistem zamanı çekilmiş,
+o ürüne ait son liste elemanın arkaplan rengi kırmızı yapılmış ondan öncekilerin ise text-decoration : line-trought css i ile üzeri çizilmiştir.
+Gece 24 te tüm listeler boşaltılmaktadır. Bu işlemi yapan fonksiyon son script olup, 23:59:59 ile siparişin verildiği zaman arasındaki farkın milisaniye cinsinden verilmesi ile yapılmıştır.
+Deneme aşamasında bu scriptte saatinize yakın bir zaman vererek listelerin boşaltıldığını deneyebilirsiniz. İlgi alakanız için teşekkür ederim :) 
+
+
+Eren AÇIKEL
